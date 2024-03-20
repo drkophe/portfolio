@@ -3,7 +3,7 @@ import * as Icons from 'lucide-react';
 import { useState } from 'react';
 import Icon from './Icon';
 
-export default function Button({ label, leftIcon, rightIcon, type, size, iconSize, rounded, link }) {
+export default function Button({ label, leftIcon, rightIcon, type, size, iconSize, rounded, link, picture }) {
     // state
         // setup tab type with the props reference
         const [tabType, setTabType] = useState({
@@ -56,6 +56,14 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
                 full : "rounded-full", 
             });
 
+            // setup picture size with the props reference
+            const [pictureSize, setPictureSize] = useState({
+                small: "w-8 h-8",
+                medium: "w-10 h-10",
+                large: "w-13 h-13",
+                larger: "w-16 h-16",
+            })
+
 
     // comportement
 
@@ -63,26 +71,41 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
     // render
     return (
         <a href={link}>
-            <button
-                className={clsx(
-                    // Flexbox
-                    "flex items-center justify-center",
-                    // Spacing and Size
-                    tabSize[size],
-                    // Border
-                    rounded ? tabRounded[rounded] : tabRounded["medium"],
-                    // Text
-                    "font-medium",
-                    // Animation
-                    "transition-all duration-300",
-                    // Colors / Hover / DarkMode
-                    tabType[type],
+
+            <a href={link}>
+                <button
+                    className={clsx(
+                        // Flexbox
+                        "flex items-center justify-center",
+                        // Border
+                        rounded ? tabRounded[rounded] : tabRounded["medium"],
+                        // Animation
+                        "transition-all duration-300",
+
+                        picture ? 
+
+                        // Picture
+                        size ? pictureSize[size] : pictureSize["medium"]
+
+                        :
+
+                        // Spacing and Size
+                        size ? tabSize[size] : tabSize["medium"],
+                        // Text
+                        "font-medium",
+                        // Colors / Hover / DarkMode
+                        type ? tabType[type] : tabType["primary"],
+
                     )}
-                    >
-                {leftIcon && <Icon name={leftIcon} size={iconSize ? iconSize : size}/>}
-                <p className='leading-normal'>{label}</p>
-                {rightIcon && <Icon name={rightIcon} size={iconSize ? iconSize : size}/>}
-            </button>
+                >
+                    
+                    {leftIcon && <Icon name={leftIcon} size={iconSize ? iconSize : size}/>}
+                    {label && <p className='leading-normal'>{label}</p>}
+                    {picture && <img src={picture} alt="" />}
+                    {rightIcon && <Icon name={rightIcon} size={iconSize ? iconSize : size}/>}
+
+                </button>            
+            </a>
         </a>
     )
 }

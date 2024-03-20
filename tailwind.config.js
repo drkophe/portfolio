@@ -56,6 +56,9 @@ export default {
         '15': '15px',
         '20': '20px',
       },
+      width: {
+        '13': '3.25rem',
+      }
     },
   },
   plugins: [],
