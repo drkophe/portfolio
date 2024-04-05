@@ -2,33 +2,24 @@ import { useState } from "react";
 import Button from "../Button";
 import avatar from "../../assets/img/avatar.png";
 import clsx from "clsx";
+import Link from "../Link";
 
 export default function Navbar() {
     // state
     const [links, setLinks] = useState(['Acceuil', 'Projects', 'Skills', 'Work Together']);
+    // /!\ key must be review because name ? /!\
+    // const [links, setLinks] = useState([
+    //     <Link key={name} href="/" name="Acceuil"/>,
+    //     <Link key={name} href="/projects" name="Projects"/>,
+    //     <Link key={name} href="/skills" name="Skills"/>,
+    //     <Link key={name} href="/work-together" name="Work Together"/>,
+    // ]);
 
     // const [mode, setMode] = useState('light');
 
     const navigation = links.map((link) => 
     <li key={link} className="mx-3 text-white">
-        <a href="#" 
-        className={clsx(
-            // Spacing & Position    
-            " block relative px-1",
-            // After
-                // Position
-                "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 ",
-                // Content & Background
-                " after:content-[''] after:bg-indigo-400 after:opacity-0",
-                // Animation
-                " after:transition-all after:duration-300 ",
-            // Hover
-                "hover:after:opacity-100 hover:after:translate-y-1 ",
-            // Focus
-                "focus:after:opacity-100 focus:after:translate-y-1 ",
-        )}>
-            {link}
-        </a>
+        <Link href={"#" + link.replace(" ", "")} name={link}/>
     </li>
     );
 
