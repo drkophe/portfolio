@@ -19,7 +19,9 @@ export default function Navbar() {
 
     const navigation = links.map((link) => 
     <li key={link} className="mx-3 text-white">
-        <Link href={"#" + link.replace(" ", "")} name={link}/>
+        <Link href={"#" + link.replace(" ", "")} name={link} className={clsx(
+            
+        )} />
     </li>
     );
 

@@ -5,7 +5,7 @@ export default function Link({ href, name }) {
         <a href={href}
         className={clsx(
             // Spacing & Position    
-            " block relative px-1",
+            " block relative px-1 w-fit",
             // After
                 // Position
                 "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 ",
@@ -16,7 +16,7 @@ export default function Link({ href, name }) {
             // Hover
                 "hover:after:opacity-100 hover:after:translate-y-1 ",
             // Focus
-                "focus:after:opacity-100 focus:after:translate-y-1 ",
+                // "focus:after:opacity-100 focus:after:translate-y-1 ",
         )}>
             {name}
         </a>
