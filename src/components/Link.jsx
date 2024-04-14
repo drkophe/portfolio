@@ -4,6 +4,8 @@ export default function Link({ href, name }) {
     return (
         <a href={href}
         className={clsx(
+            // Style
+            "text-black dark:text-white",
             // Spacing & Position    
             " block relative px-1 w-fit",
             // After

@@ -1,9 +1,8 @@
 import clsx from 'clsx';
-import * as Icons from 'lucide-react';
 import { useState } from 'react';
 import Icon from './Icon';
 
-export default function Button({ label, leftIcon, rightIcon, type, size, iconSize, rounded, link, picture }) {
+export default function Button({ label, leftIcon, rightIcon, type, size, iconSize, rounded, link, picture, tag }) {
     // state
         // setup tab type with the props reference
         const [tabType, setTabType] = useState({
@@ -28,6 +27,12 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
             // "dark:hover:bg-primary-400 dark:hover:text-white dark:hover:fill-white",
 
             tertiary: 'border-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-10 dark:hover:bg-gray-200 dark:hover:bg-opacity-10 text-black dark:text-white',
+
+            // Statut
+            done: 'bg-emerald-500 dark:bg-emerald-400 text-white dark:text-emerald-950',
+            
+            inProgress: 'border-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-10 dark:hover:bg-gray-200 dark:hover:bg-opacity-10 text-black dark:text-white',
+            toDo: 'border-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-10 dark:hover:bg-gray-200 dark:hover:bg-opacity-10 text-black dark:text-white',
         });
 
             // setup tab size with the props reference
@@ -45,7 +50,24 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
                 larger: "p-4 text-lg",
             })
 
-            const [tabSize, setTabSize] = useState(label ? withIcon : withoutIcon);
+            // setup tag size with the props reference
+            const [tagWithIcon, setTagWithIcon] = useState({
+                small: "h-5 px-1.5 text-xs space-x",
+                medium: "h-6 px-1.5 text-sm space-x-1",
+                large: "h-7 px-2 text-base space-x-1",
+            })
+
+            const [tagWithoutIcon, setTagWithoutIcon] = useState({
+                small: "h-5 px-1.5 text-xs",
+                medium: "h-6 px-1.5 text-sm",
+                large: "h-7 px-2 text-base",
+            })
+
+
+            // const [tabSize, setTabSize] = useState(label ? withIcon : withoutIcon);
+            const [tabSize, setTabSize] = useState(leftIcon&&label || rightIcon&&label || leftIcon&&rightIcon ? withIcon : withoutIcon);
+            // const [tagSize, setTagSize] = useState(label ? tagWithIcon : tagWithoutIcon);
+            const [tagSize, setTagSize] = useState(leftIcon || rightIcon || leftIcon&&rightIcon ? tagWithIcon : tagWithoutIcon);
 
             // setup border corner with the props reference
             const [tabRounded, setTabRounded] = useState({
@@ -71,41 +93,43 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
     // render
     return (
         <a href={link}>
-
-            <a href={link}>
-                <button
-                    className={clsx(
-                        // Flexbox
-                        "flex items-center justify-center",
-                        // Border
-                        rounded ? tabRounded[rounded] : tabRounded["medium"],
-                        // Animation
-                        "transition-all duration-300",
-
-                        picture ? 
-
-                        // Picture
-                        size ? pictureSize[size] : pictureSize["medium"]
-
-                        :
-
-                        // Spacing and Size
-                        size ? tabSize[size] : tabSize["medium"],
-                        // Text
-                        "font-medium",
-                        // Colors / Hover / DarkMode
-                        type ? tabType[type] : tabType["primary"],
-
-                    )}
-                >
+            <button
+                className={clsx(
+                    // Flexbox
+                    "flex items-center justify-center",
+                    // Border
+                    rounded ? tabRounded[rounded] : tabRounded["medium"],
+                    // Animation
+                    "transition-all duration-300",
                     
-                    {leftIcon && <Icon name={leftIcon} size={iconSize ? iconSize : size}/>}
-                    {label && <p className='leading-normal'>{label}</p>}
-                    {picture && <img src={picture} alt="" />}
-                    {rightIcon && <Icon name={rightIcon} size={iconSize ? iconSize : size}/>}
+                    picture ? 
+                    
+                    // Picture
+                    size ? pictureSize[size] : pictureSize["medium"]
+                    
+                    :
+                    
+                    // Spacing and Size
+                    tag ? 
+                    size ? tagSize[size] : tagSize["medium"]
+                    :
+                    size ? tabSize[size] : tabSize["medium"],
+                    // Text
+                    "font-medium",
+                    tag ? "font-bold" : "",
+                    // Colors / Hover / DarkMode
+                    type ? tabType[type] : tabType["primary"],
+                    // Pointer
+                    link ? "pointer-events-auto" : "pointer-events-none", 
+                )}
+            >
+                
+                {leftIcon && <Icon name={leftIcon} size={iconSize ? iconSize : size}/>}
+                {label && <p className='leading-normal'>{label}</p>}
+                {picture && <img src={picture} alt="" />}
+                {rightIcon && <Icon name={rightIcon} size={iconSize ? iconSize : size}/>}
 
-                </button>            
-            </a>
+            </button>            
         </a>
     )
 }

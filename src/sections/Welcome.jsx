@@ -14,7 +14,6 @@ export default function Welcome() {
             "flex flex-col items-center justify-center",
             // Dimensions & Position & Spacing
             "h-screen relative py-20",
-            "dark"
         )}>
 
             <Banner />

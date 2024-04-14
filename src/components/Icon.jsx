@@ -18,7 +18,12 @@ export default function Icon({name, size}) {
     // render
     return (
         <div>
-            {IconComponent && <IconComponent style={{width: tabSize[size], height: tabSize[size]}} />}
+            {
+                name == "Dot" ?
+                IconComponent && <IconComponent style={{width: tabSize[size], height: tabSize[size], strokeWidth: 6}} />
+                :
+                IconComponent && <IconComponent style={{width: tabSize[size], height: tabSize[size]}} />
+            }
         </div>
     )
 }
