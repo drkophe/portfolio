@@ -18,7 +18,7 @@ export default function Projects() {
                         title="Sudoku"
                         statut="done"
                         technos={["HTML", "CSS", "JavaScript"]}
-                        img={"../src/assets/img/projects_img/project_sudoku.png"}
+                        img={"../src/assets/img/project_sudoku.png"}
                         />
                     </div>
                     <div className="h-2/5">
@@ -26,7 +26,7 @@ export default function Projects() {
                         title="Sudoku"
                         statut="done"
                         technos={["HTML", "CSS", "JavaScript"]}
-                        img={"../src/assets/img/projects_img/project_sudoku.png"}
+                        img={"../src/assets/img/project_sudoku.png"}
                         />
                     </div>
                 </div>
@@ -36,7 +36,7 @@ export default function Projects() {
                     title="Sudoku"
                     statut="done"
                     technos={["HTML", "CSS", "JavaScript"]}
-                    img={"../src/assets/img/projects_img/project_sudoku.png"}
+                    img={"../src/assets/img/project_sudoku.png"}
                     />
                 </div>
 
@@ -45,7 +45,7 @@ export default function Projects() {
                     title="Sudoku"
                     statut="done"
                     technos={["HTML", "CSS", "JavaScript"]}
-                    img={"../src/assets/img/projects_img/project_sudoku.png"}
+                    img={"../src/assets/img/project_sudoku.png"}
                     />
                 </div>
             </div>
