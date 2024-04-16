@@ -8,8 +8,8 @@ export default function Skills() {
         <section id="Skills" className="flex flex-col justify-center items-center p-6">
             <h2 className="text-4xl font-bold text-center text-white mt-24">Skills</h2>
 
-            <div className="flex items-center justify-center w-full h-[50vh]">
-                <div className="flex items-start justify-center w-full space-x-20">
+            <div className="flex items-center justify-center w-full md:h-[50vh]">
+                <div className="flex flex-wrap md:items-start items-center justify-center w-full md:space-x-20 max-md:space-y-10 *:w-full md:*:w-fit ">
                     <Skill 
                         title="Design"
                         skills={['Figma', 'TailwindCSS']}

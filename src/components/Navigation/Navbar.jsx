@@ -7,13 +7,12 @@ import Link from "../Link";
 export default function Navbar() {
     // state
     const [links, setLinks] = useState(['Acceuil', 'Projects', 'Skills', 'Work Together']);
-    // /!\ key must be review because name ? /!\
-    // const [links, setLinks] = useState([
-    //     <Link key={name} href="/" name="Acceuil"/>,
-    //     <Link key={name} href="/projects" name="Projects"/>,
-    //     <Link key={name} href="/skills" name="Skills"/>,
-    //     <Link key={name} href="/work-together" name="Work Together"/>,
-    // ]);
+   
+    // const activeClassName = "selected navlink";
+    // const activeStyleCallback = ( isActive ) =>
+    // isActive ? activeClassName : "navlink";
+
+
 
     // const [mode, setMode] = useState('light');
 
@@ -25,10 +24,26 @@ export default function Navbar() {
     </li>
     );
 
+    const [isOpen, setIsOpen] = useState(false);
+    // const location = useLocation();
+
+    const toggleNavbar = () => {
+        setIsOpen(!isOpen);
+    };
+    
+
     // comportement
     // render
     return (
-        <nav className="mx-auto py-8 max-w-max flex flex-row items-center px-2 sm:px-6 lg:px-8 fixed top-0 left-0 right-0 z-50 space-x-6">
+        <nav className={clsx(
+            // Flexbox
+            // "sm:flex flex-row justify-between items-center",
+            "flex",
+            // Dimensions & Position & Spacing
+            // "fixed mx-auto py-8 max-w-max px-2 top-0 left-0 right-0 z-50 space-x-6",
+            // Media Queries
+            "flex-[1] items-center justify-end overflow-hidden",
+        )}>
 
             <Button 
                 picture={avatar}
@@ -36,7 +51,7 @@ export default function Navbar() {
                 size="large"
             />
 
-            <ul className="flex flex-row bg-slate-800 h-full p-3 rounded-full border-2 border-indigo-400">{navigation}</ul>
+            <ul className=" flex-row bg-slate-800 h-full p-3 rounded-full border-2 border-indigo-400 hidden justify-end md:flex ">{navigation}</ul>
 
             <Button 
                 leftIcon="Moon"
