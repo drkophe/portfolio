@@ -5,11 +5,11 @@ export default function Skills() {
     // comportement
     // render
     return (
-        <section id="Skills" className="flex flex-col justify-center items-center p-6">
-            <h2 className="text-4xl font-bold text-center text-white mt-24">Skills</h2>
+        <section id="Skills" className="flex flex-col justify-center items-center md:p-6 pt-10 md:mt-0 my-20 w-[100vw]">
+            <h2 className="text-4xl font-bold text-center text-white md:mt-24 md:mb-0 mb-20">Skills</h2>
 
             <div className="flex items-center justify-center w-full md:h-[50vh]">
-                <div className="flex flex-wrap md:items-start items-center justify-center w-full md:space-x-20 max-md:space-y-10 *:w-full md:*:w-fit ">
+                <div className="flex md:flex-row flex-wrap md:items-start items-center justify-center w-full md:space-x-20 max-md:space-y-10 *:w-3/6 md:*:w-fit ">
                     <Skill 
                         title="Design"
                         skills={['Figma', 'TailwindCSS']}

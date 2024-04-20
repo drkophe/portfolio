@@ -1,10 +1,13 @@
 import clsx from "clsx";
 import Button from "../Button";
 import { useState } from "react";
+import useIsPhone from "../Hook/useIsPhone";
 
 export default function Projects({ statut, title, technos, img, altImg }) {
     // state
     const [hovered, setHovered] = useState(false);
+    const isPhone = useIsPhone();
+    
     // comportement
     // render
     return (
@@ -68,9 +71,10 @@ export default function Projects({ statut, title, technos, img, altImg }) {
                 }
             </div>
 
+                {/* TODO : Optimiser le space-x-4 car non responsive frendly pour l'instant j'ai mis nowrap mais ca serait mieux en wrap*/}
             <div className={clsx(
                 // Flexbox
-                "flex items-center justify-center flex-wrap space-x-4",
+                "flex items-center justify-center flex-nowrap space-x-4",
                 // Spacing & Position
                 "absolute bottom-0 w-full h-32 p-4",
                 // Animation
@@ -83,7 +87,7 @@ export default function Projects({ statut, title, technos, img, altImg }) {
 
                 <Button 
                 label="En savoir plus"
-                size="small"
+                size={isPhone ? "medium" : "small"}
                 rounded="full"
                 type="primary"
                 rightIcon="ArrowRight"
@@ -92,7 +96,7 @@ export default function Projects({ statut, title, technos, img, altImg }) {
 
                 <Button 
                 label="Visiter le site"
-                size="small"
+                size={isPhone ? "medium" : "small"}
                 rounded="full"
                 type="primary"
                 rightIcon="ArrowRight"

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-export default function Link({ href, name }) {    
+export default function Link({ href, name, classNameAdd, onClick }) {    
     return (
         <a href={href}
         className={clsx(
@@ -19,7 +19,12 @@ export default function Link({ href, name }) {
                 "hover:after:opacity-100 hover:after:translate-y-1 ",
             // Focus
                 // "focus:after:opacity-100 focus:after:translate-y-1 ",
-        )}>
+
+            classNameAdd ? classNameAdd : "",
+            onClick ? "cursor-pointer" : ""
+        )}
+        onClick={onClick ? onClick : null}
+        >
             {name}
         </a>
     );

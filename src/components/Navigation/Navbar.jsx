@@ -3,46 +3,44 @@ import Button from "../Button";
 import avatar from "../../assets/img/avatar.png";
 import clsx from "clsx";
 import Link from "../Link";
+import useIsPhone from "../Hook/useIsPhone";
 
 export default function Navbar() {
     // state
-    const [links, setLinks] = useState(['Acceuil', 'Projects', 'Skills', 'Work Together']);
-   
-    // const activeClassName = "selected navlink";
-    // const activeStyleCallback = ( isActive ) =>
-    // isActive ? activeClassName : "navlink";
+    const [links, setLinks] = useState(['Home', 'Projects', 'Skills', 'Work Together']);
 
+    const [menuOpen, setMenuOpen] = useState(false); // État pour gérer l'ouverture/fermeture du menu
 
-
-    // const [mode, setMode] = useState('light');
-
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen); // Inverse l'état actuel du menu
+    };
     const navigation = links.map((link) => 
-    <li key={link} className="mx-3 text-white">
-        <Link href={"#" + link.replace(" ", "")} name={link} className={clsx(
+    <li key={link} className="mx-3 text-white w-fit">
+        <Link href={"#" + link.replace(" ", "")} name={link} onClick={toggleMenu} classNameAdd={clsx( "p-2 md:p-0"
             
         )} />
     </li>
     );
-
-    const [isOpen, setIsOpen] = useState(false);
-    // const location = useLocation();
-
-    const toggleNavbar = () => {
-        setIsOpen(!isOpen);
-    };
     
+    
+    const isPhone = useIsPhone();
 
     // comportement
     // render
     return (
+
+        <div>
+
+        {isPhone ?
+
         <nav className={clsx(
             // Flexbox
             // "sm:flex flex-row justify-between items-center",
-            "flex",
+            "flex justify-between",
             // Dimensions & Position & Spacing
-            // "fixed mx-auto py-8 max-w-max px-2 top-0 left-0 right-0 z-50 space-x-6",
+            "fixed mx-auto py-4 w-full px-4 z-50 space-x-6",
             // Media Queries
-            "flex-[1] items-center justify-end overflow-hidden",
+
         )}>
 
             <Button 
@@ -51,17 +49,133 @@ export default function Navbar() {
                 size="large"
             />
 
-            <ul className=" flex-row bg-slate-800 h-full p-3 rounded-full border-2 border-indigo-400 hidden justify-end md:flex ">{navigation}</ul>
+            <div className={clsx(
+                    "w-screen absolute",
+                    menuOpen ? "top-0 transition-top-0 duration-500 ease-in-out " : "-top-72 transition-top-72 duration-500 ease-in-out", 
+                    "right-0"
+                )}>
+            <Button 
+                leftIcon="Moon"
+                type="primary"
+                size="large"
+                rounded="full"
+                classNameAdd="absolute top-4 left-4"
+            />
+                <ul className="flex flex-col items-center bg-slate-800 h-full p-3 py-10 md:p-0 justify-center space-y-4 ">{navigation}</ul>
+            <Button 
+                leftIcon="X"
+                type="primary"
+                size="large"
+                rounded="full"
+                classNameAdd="absolute top-4 right-4"
+                onClick={toggleMenu}
+            />
+            </div>
+
+            <Button 
+                leftIcon="Menu"
+                type="primary"
+                size="large"
+                rounded="full"
+                onClick={toggleMenu}
+            />
+        </nav>
+
+        :
+
+        <nav className={clsx(
+            // Flexbox
+            // "sm:flex flex-row justify-between items-center",
+            "flex",
+            // Dimensions & Position & Spacing
+            "fixed mx-auto py-8 max-w-max px-2 top-0 left-0 right-0 z-50 space-x-6",
+            // Media Queries
+
+        )}>
+
+            <Button 
+                picture={avatar}
+                rounded="full"
+                size="large"
+            />
+
+            <ul className=" flex-row bg-slate-800 h-full p-3 rounded-full border-2 border-indigo-400 justify-end md:flex ">{navigation}</ul>
 
             <Button 
                 leftIcon="Moon"
                 type="primary"
                 size="large"
                 rounded="full"
-
-                // onClick={() => setLinks(['Acceuil', 'Projects', 'Skills', 'Work Together'])}
             />
+        </nav>}
 
-        </nav>
+        </div>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useState } from "react";
+// import Button from "../Button";
+// import avatar from "../../assets/img/avatar.png";
+// import clsx from "clsx";
+// import Link from "../Link";
+
+// export default function Navbar() {
+//     // state
+//     const [links, setLinks] = useState(['Acceuil', 'Projects', 'Skills', 'Work Together']);
+
+//     const navigation = links.map((link) => 
+//     <li key={link} className="mx-3 text-white">
+//         <Link href={"#" + link.replace(" ", "")} name={link} className={clsx(
+            
+//         )} />
+//     </li>
+//     );    
+
+//     // comportement
+//     // render
+//     return (
+//         <nav className={clsx(
+//             // Flexbox
+//             // "sm:flex flex-row justify-between items-center",
+//             "flex",
+//             // Dimensions & Position & Spacing
+//             "fixed mx-auto py-8 max-w-max px-2 top-0 left-0 right-0 z-50 space-x-6",
+//             // Media Queries
+
+//         )}>
+
+//             <Button 
+//                 picture={avatar}
+//                 rounded="full"
+//                 size="large"
+//             />
+
+//             <ul className=" flex-row bg-slate-800 h-full p-3 rounded-full border-2 border-indigo-400 hidden justify-end md:flex ">{navigation}</ul>
+
+//             <Button 
+//                 leftIcon="Moon"
+//                 type="primary"
+//                 size="large"
+//                 rounded="full"
+//             />
+//         </nav>
+//     )
+// }
+
+
+
+
+

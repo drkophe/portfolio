@@ -6,12 +6,12 @@ export default function Contact() {
     // comportement
     // render
     return (
-        <section id="WorkTogether" className="flex flex-col justify-between  items-center p-6 h-[60vh]">
+        <section id="WorkTogether" className="flex flex-col justify-between  items-center md:p-6 pt-10 h-[60vh] w-[100vw]">
 
-            <h2 className="text-4xl font-bold text-center text-white md:m-10">Work Together</h2>
+            <h2 className="text-4xl font-bold text-center text-white m-10">Work Together</h2>
 
             <div className="w-full flex md:flex-row flex-col justify-center items-center h-4/6">
-                <form className="w-3/6 max-w-sm mx-auto">
+                <form className="md:w-3/6 md:max-w-sm mx-auto m-10">
                     
                     <label htmlFor="email-address-icon" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                     <div className="relative">
@@ -32,7 +32,7 @@ export default function Contact() {
                     <button type="submit" className="text-white bg-indigo-400 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:focus:bg-indigo-800 transform duration-300">Send</button>
                 </form>
 
-                <div className="w-3/6 h-full border-l-2 opacity-60 flex justify-center items-center space-x-6">
+                <div className="md:w-3/6 h-full md:border-l-2 border-t-2 md:border-t-0 flex justify-center items-center space-x-6 p-10">
                         <Button
                             link="https://github.com/drkophe"
                             leftIcon="Github"

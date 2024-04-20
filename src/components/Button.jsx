@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import Icon from './Icon';
 
-export default function Button({ label, leftIcon, rightIcon, type, size, iconSize, rounded, link, picture, tag }) {
+export default function Button({ label, leftIcon, rightIcon, type, size, iconSize, rounded, link, picture, tag, classNameAdd, onClick }) {
     // state
         // setup tab type with the props reference
         const [tabType, setTabType] = useState({
@@ -120,8 +120,12 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
                     // Colors / Hover / DarkMode
                     type ? tabType[type] : tabType["primary"],
                     // Pointer
-                    link ? "pointer-events-auto" : "pointer-events-none", 
+                    link || onClick ? "pointer-events-auto" : "pointer-events-none", 
+
+                    // Add
+                    classNameAdd ? classNameAdd : ""
                 )}
+                onClick={onClick ? onClick : null}
             >
                 
                 {leftIcon && <Icon name={leftIcon} size={iconSize ? iconSize : size}/>}
