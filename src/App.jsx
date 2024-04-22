@@ -1,20 +1,21 @@
 import './App.css'
-import Navbar from './components/Navigation/Navbar'
 import Welcome from './sections/Welcome'
-import Projects from './sections/Projects'
-import Skills from './sections/Skills'
-import Contact from './sections/Contact'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Home from './Home'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />
+  },
+  {
+    path: "/welcome",
+    element: <Welcome /> 
+  }
+])
 function App() {
 
-  return (
-    <div className='dark pb-14'>
-      <Navbar />
-      <Welcome />
-      <Projects />
-      <Skills />
-      <Contact />
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
