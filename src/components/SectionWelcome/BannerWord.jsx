@@ -25,7 +25,7 @@ export default function BannerWord({word}) {
         )}>
             <p className={clsx(
                 // Font
-                "uppercase font-trispace font-semibold text-9xl text-white tracking-tight",
+                "uppercase font-trispace font-semibold text-9xl dark:text-white text-black tracking-tight",
                 isPhone ? "text-8xl" : "text-9xl",
                 // Spacing
                 "mr-16",

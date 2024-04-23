@@ -16,7 +16,11 @@
 }
 
 body {
-  background-color: #0F172A;
+  background-color: #FFFF;
+  transition: all;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* background-color: #0F172A; */
 }
 
 /* Scrollbar */

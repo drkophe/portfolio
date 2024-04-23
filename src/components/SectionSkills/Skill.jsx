@@ -6,7 +6,7 @@ export default function Skill({title, skills}) {
     // render
     return (
         <div className="flex flex-col items-center justify-center">
-            <h3 className="text-white font-black text-2xl mb-6">{title}</h3>
+            <h3 className="dark:text-white text-black font-black text-2xl mb-6">{title}</h3>
             <div className="space-y-3 flex flex-col items-center">
                 {skills.map((skill, index) => (
                     <Button 

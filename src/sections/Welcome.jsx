@@ -62,7 +62,7 @@ export default function Welcome() {
 
             <div className="relative lg:right-[2%] md:pt-10 h-3/6 flex md:flex-row flex-col-reverse items-center justify-end md:pr-10 w-11/12 space-x-10">
 
-                <div className="h-2/6 md:max-w-xl lg:pl-10 text-right text-white space-y-4 flex flex-col p-2 items-end self-end lg:pr-10">
+                <div className="h-2/6 md:max-w-xl lg:pl-10 text-right dark:text-white text-black space-y-4 flex flex-col p-2 items-end self-end lg:pr-10">
 
                     <h2 className="lg:text-5xl md:text-4xl text-3xl w-fit font-bold">Front end developer</h2>
                     <h2 className="lg:text-5xl md:text-3xl text-3xl w-fit">Lorenzo Bosi</h2>

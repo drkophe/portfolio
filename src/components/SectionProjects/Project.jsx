@@ -47,7 +47,7 @@ export default function Projects({ statut, title, technos, img, altImg }) {
             style={{ opacity: hovered ? '0%' : '100%', transitionProperty: 'opacity' }}
             >
 
-                <h3 className="text-white font-black text-2xl">{title}</h3>
+                <h3 className="dark:text-white text-slate-600 font-black text-2xl">{title}</h3>
                 <Button
                     label="Done"
                     size="small"

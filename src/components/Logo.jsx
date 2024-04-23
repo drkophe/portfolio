@@ -1,14 +1,14 @@
-import * as Icons from 'lucide-react';
-import * as IconsSi from 'react-icons/si'
-import { useEffect, useState } from 'react';
+import * as Icons from 'react-icons/si';
+// import { SiHtml5 } from 'react-icons/si';
+import { useState } from 'react';
 
-export default function Icon({name, size}) {
+export default function Logo({name, size}) {
     // state
         // setup left icon and right icon in state with props
         const [iconName, setIconName] = useState(name);
+        const IconComponent = Icons[iconName];
 
-        // const IconComponent = Icons[iconName];
-        const [IconComponent, setIconComponent] = useState(Icons[iconName]);
+        // console.log(IconComponent == undefined)
 
 
     // Retourne null si aucune icône n'est trouvée
@@ -29,9 +29,9 @@ export default function Icon({name, size}) {
         <div>
             {
                 name == "Dot" ?
-                IconComponent && <IconComponent style={{width: tabSize[size], height: tabSize[size], strokeWidth: 6}} />
+                IconComponent && <IconComponent style={{width: tabSize[size], height: tabSize[size], strokeWidth: 6,}} />
                 :
-                IconComponent && <IconComponent style={{width: tabSize[size], height: tabSize[size]}} />
+                IconComponent && <IconComponent style={{width: tabSize[size], height: tabSize[size], fontSize: tabSize[size]}} />
             }
         </div>
     )

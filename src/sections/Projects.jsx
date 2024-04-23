@@ -8,7 +8,7 @@ export default function Projects() {
     return (
         <section id="Projects" className="flex flex-col justify-center items-center md:p-6 pt-10 pt md:mt-0 mt-20 w-[100vw]">
 
-            <h2 className="text-4xl font-bold text-center mb-6 text-white">Projects</h2>
+            <h2 className="text-4xl font-bold text-center mb-6 text-black dark:text-white">Projects</h2>
             <Link name="See all projects" href="/projects" />
             
             <div className="flex md:flex-row flex-col items-center justify-center p-6 w-full my-6">

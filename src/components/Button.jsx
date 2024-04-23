@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import Icon from './Icon';
+import Logo from './Logo';
 
-export default function Button({ label, leftIcon, rightIcon, type, size, iconSize, rounded, link, picture, tag, classNameAdd, onClick }) {
+export default function Button({ label, leftIcon, rightIcon, type, size, iconSize, rounded, link, picture, tag, classNameAdd, onClick, iconifyIcon }) {
     // state
         // setup tab type with the props reference
         const [tabType, setTabType] = useState({
@@ -16,7 +17,7 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
             // // Hover Dark
             // "dark:hover:bg-primary-300 dark:hover:fill-primary-300",
 
-            secondary: 'bg-primary-100 text-primary-500 fill-primary-500 dark:bg-primary-600 dark:text-primary-200 dark:fill-primary-200 hover:bg-primary-400 hover:text-primary-800 hover:fill-primary-800 dark:hover:bg-primary-400 dark:hover:text-white dark:hover:fill-white',
+            secondary: 'bg-primary-200 text-primary-500 fill-primary-500 dark:bg-primary-600 dark:text-primary-200 dark:fill-primary-200 hover:bg-primary-400 hover:text-primary-800 hover:fill-primary-800 dark:hover:bg-primary-400 dark:hover:text-white dark:hover:fill-white',
             // // Colors
             // "bg-primary-100 text-primary-500 fill-primary-500",
             // // Corlors Dark
@@ -26,13 +27,14 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
             // // Hover Dark
             // "dark:hover:bg-primary-400 dark:hover:text-white dark:hover:fill-white",
 
-            tertiary: 'border-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-10 dark:hover:bg-gray-200 dark:hover:bg-opacity-10 text-black dark:text-white',
+            tertiary: 'border-2 border-slate-600 bg-transparent hover:bg-gray-500 hover:bg-opacity-10 dark:hover:bg-gray-200 dark:hover:bg-opacity-10 text-black dark:text-white',
 
             // Statut
             done: 'bg-emerald-500 dark:bg-emerald-400 text-white dark:text-emerald-950',
             
             inProgress: 'border-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-10 dark:hover:bg-gray-200 dark:hover:bg-opacity-10 text-black dark:text-white',
             toDo: 'border-2 bg-transparent hover:bg-gray-500 hover:bg-opacity-10 dark:hover:bg-gray-200 dark:hover:bg-opacity-10 text-black dark:text-white',
+            ghost: 'border-0 bg-transparent text-primary-500 dark:text-primary-400',
         });
 
             // setup tab size with the props reference
@@ -87,53 +89,59 @@ export default function Button({ label, leftIcon, rightIcon, type, size, iconSiz
             })
 
 
-    // comportement
+    // comportement4
+
+     // Renvoyez le rendu conditionnel de la balise <a>
+     const buttonContent = (
+        <button
+            className={clsx(
+                // Flexbox
+                "flex items-center justify-center",
+                // Border
+                rounded ? tabRounded[rounded] : tabRounded["medium"],
+                // Animation
+                "transition-all duration-300",
+                
+                picture ? 
+                
+                // Picture
+                size ? pictureSize[size] : pictureSize["medium"]
+                
+                :
+                
+                // Spacing and Size
+                tag ? 
+                size ? tagSize[size] : tagSize["medium"]
+                :
+                size ? tabSize[size] : tabSize["medium"],
+                // Text
+                "font-medium",
+                tag ? "font-bold" : "",
+                // Colors / Hover / DarkMode
+                type ? tabType[type] : tabType["primary"],
+                // Pointer
+                link || onClick ? "pointer-events-auto" : "pointer-events-none", 
+
+                // Add
+                classNameAdd ? classNameAdd : ""
+            )}
+            onClick={onClick ? onClick : null}
+        >
+            
+            {leftIcon && <Icon name={leftIcon} size={iconSize ? iconSize : size}/>}
+            {leftIcon && <Logo name={leftIcon} size={iconSize ? iconSize : size}/>}
+
+            {label && <p className='leading-normal'>{label}</p>}
+
+            {picture && <img src={picture} alt="" />}
+
+            {rightIcon && <Icon name={rightIcon} size={iconSize ? iconSize : size}/>}
+            {rightIcon && <Logo name={rightIcon} size={iconSize ? iconSize : size}/>}
+
+        </button>   
+    );
 
 
     // render
-    return (
-        <a href={link}>
-            <button
-                className={clsx(
-                    // Flexbox
-                    "flex items-center justify-center",
-                    // Border
-                    rounded ? tabRounded[rounded] : tabRounded["medium"],
-                    // Animation
-                    "transition-all duration-300",
-                    
-                    picture ? 
-                    
-                    // Picture
-                    size ? pictureSize[size] : pictureSize["medium"]
-                    
-                    :
-                    
-                    // Spacing and Size
-                    tag ? 
-                    size ? tagSize[size] : tagSize["medium"]
-                    :
-                    size ? tabSize[size] : tabSize["medium"],
-                    // Text
-                    "font-medium",
-                    tag ? "font-bold" : "",
-                    // Colors / Hover / DarkMode
-                    type ? tabType[type] : tabType["primary"],
-                    // Pointer
-                    link || onClick ? "pointer-events-auto" : "pointer-events-none", 
-
-                    // Add
-                    classNameAdd ? classNameAdd : ""
-                )}
-                onClick={onClick ? onClick : null}
-            >
-                
-                {leftIcon && <Icon name={leftIcon} size={iconSize ? iconSize : size}/>}
-                {label && <p className='leading-normal'>{label}</p>}
-                {picture && <img src={picture} alt="" />}
-                {rightIcon && <Icon name={rightIcon} size={iconSize ? iconSize : size}/>}
-
-            </button>            
-        </a>
-    )
+    return link ? <a href={link} className={classNameAdd ? classNameAdd : ""}>{buttonContent}</a> : buttonContent;
 }

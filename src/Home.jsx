@@ -6,7 +6,7 @@ import Welcome from "./sections/Welcome";
 
 export default function Home() {
     return (
-        <div className='dark pb-14'>
+        <div className='pb-14'>
           <Navbar />
           <Welcome />
           <Projects />
