@@ -1,7 +1,7 @@
 import './App.css'
-import Welcome from './sections/Welcome'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './Home'
+import AllProjects from './AllProjects'
 
 const router = createBrowserRouter([
   {
@@ -9,8 +9,8 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
-    path: "/welcome",
-    element: <Welcome /> 
+    path: "/projects",
+    element: <AllProjects /> 
   }
 ])
 function App() {
